@@ -1,17 +1,51 @@
-const { remote } = require("webdriverio");
+const tests = require("./test");
+const { openChrome } = require("./utils/driverUtils");
+const { GREEN, RED } = require("./utils/assert");
 
-(async () => {
-  const browser = await remote({
-    capabilities: {
-      browserName: "chrome",
-    },
-  });
+let passed = 0,
+  failed = 0,
+  total = 0;
+const results = [];
+async function runTests() {
+  let browser;
+  for (let key in tests) {
+    const test = tests[key];
+    if (typeof test === "function") {
+      try {
+        browser = await openChrome();
+        await test(browser);
+        results.push({
+          name: `${key} - passed`,
+          status: GREEN,
+        });
+        passed++;
+      } catch (e) {
+        results.push({
+          name: `${key} - failed`,
+          status: RED,
+        });
+        failed++;
+      } finally {
+        await browser.deleteSession();
+        total++;
+      }
+    }
+  }
 
-  await browser.url("https://webdriver.io");
+  console.log("RUN RESULT:");
+  console.log("\n********************************\n");
+  for (let { name, status } of results) {
+    console.log(status, name);
+  }
+}
 
-  const apiLink = await browser.$('a[href*="gettingstarted"].button');
-  await apiLink.click();
-
-  await browser.saveScreenshot("./screenshot.png");
-  await browser.deleteSession();
-})();
+runTests()
+  .then(() => {
+    console.log("\n********************************\n");
+    if (!failed) {
+      console.log(GREEN, `${passed} of ${total} Tests PASSED`);
+    } else {
+      console.log(RED, `${failed} of ${total} Tests Failed`);
+    }
+  })
+  .catch((e) => console.error("Something went wrong", e));

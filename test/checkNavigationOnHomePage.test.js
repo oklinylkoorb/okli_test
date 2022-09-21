@@ -1,35 +1,51 @@
 const HomePage = require("../pageobjects/home.page");
 const ShopPage = require("../pageobjects/shop.page");
-const openChrome = require("../utils/driverUtils");
-const { expect } = require("chai");
+const { assert } = require("./../utils/assert");
 
-let browser;
+//Check Navigation On Home Page
+async function checkNavigationOnHomePage(browser) {
+  console.log("TEST: shop page can be opened from home");
 
-describe("Check Navigation On Home Page", () => {
-  beforeEach(async () => {
-    browser = await openChrome();
-  });
+  console.log("Step 1: Open Home Page");
+  const homePage = new HomePage(browser);
+  homePage.open();
 
-  afterEach(async () => {
-    await browser.deleteSession();
-  });
+  console.log("Step 2: Click on Shop Btn");
+  const closeModalBtn = await homePage.closeModalBtn();
+  await closeModalBtn.click();
 
-  it("shop page can be opened from home", async () => {
-    const homePage = new HomePage(browser);
+  const shopBtn = await homePage.shopBtn();
+  await shopBtn.click();
 
-    homePage.open();
+  console.log("Step 3: Check that Dino Stickers present");
+  const shopPage = new ShopPage(browser);
+  const dinoStickersTitle = await shopPage.dinoStickersTitle();
 
-    const closeModalBtn = await homePage.closeModalBtn();
-    await closeModalBtn.click();
+  return assert(await dinoStickersTitle.getText()).equals("Dino stickers");
+}
 
-    const shopBtn = await homePage.shopBtn();
-    await shopBtn.click();
+async function checkNavigationOnHomePage2(browser) {
+  console.log("TEST: shop page can be opened from home");
 
-    const shopPage = new ShopPage(browser);
-    const dinoStickersTitle = await shopPage.dinoStickersTitle();
+  console.log("Step 1: Open Home Page");
+  const homePage = new HomePage(browser);
+  homePage.open();
 
-    return await expect(await dinoStickersTitle.getText()).equal(
-      "Dino stickers"
-    );
-  });
-});
+  console.log("Step 2: Click on Shop Btn");
+  const closeModalBtn = await homePage.closeModalBtn();
+  await closeModalBtn.click();
+
+  const shopBtn = await homePage.shopBtn();
+  await shopBtn.click();
+
+  console.log("Step 3: Check that Dino Stickers present");
+  const shopPage = new ShopPage(browser);
+  const dinoStickersTitle = await shopPage.dinoStickersTitle();
+
+  return assert(await dinoStickersTitle.getText()).equals("Dino2 stickers");
+}
+
+module.exports = {
+  checkNavigationOnHomePage: checkNavigationOnHomePage,
+  checkNavigationOnHomePage2: checkNavigationOnHomePage2,
+};
