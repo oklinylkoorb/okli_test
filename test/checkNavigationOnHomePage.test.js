@@ -43,7 +43,7 @@ async function checkShopTabs(browser) {
   const shopPage = new ShopPage(browser);
   const freeCategoryTab = await shopPage.freeCategoryTab();
   await freeCategoryTab.click();
-  const coloringChristmasTreeTitle = await shopPage.coloringChristmasTree();
+  const coloringChristmasTreeTitle = await shopPage.coloringChristmasTreeTitle();
   await coloringChristmasTreeTitle;
 
   return assert(await coloringChristmasTreeTitle.getText()).equals("Coloring Christmas tree");
