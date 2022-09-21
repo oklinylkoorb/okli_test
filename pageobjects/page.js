@@ -9,4 +9,16 @@ module.exports = class Page {
   open(path = "") {
     return this.browser.url(`https://mirakids.net/${path}`);
   }
+
+  subscribeInputField() {
+    return this.browser.$("#subscribe [type='email']");
+  }
+
+  subscribeBtn() {
+    return this.browser.$("#subscribe button");
+  }
+
+  subscriptionSuccessMsg() {
+    return this.browser.$("#subscribe [name='Done!']");
+  }
 };

@@ -1,9 +1,9 @@
 const {
   checkNavigationOnHomePage,
-  checkNavigationOnHomePage2,
 } = require("./checkNavigationOnHomePage.test");
+const { subscribeWithEmailForTheFirstTime } = require("./newsletterSubscription");
 
 module.exports = {
   checkNavigationOnHomePage: checkNavigationOnHomePage,
-  checkNavigationOnHomePage2: checkNavigationOnHomePage2,
+  subscribeWithEmailForTheFirstTime: subscribeWithEmailForTheFirstTime,
 };
