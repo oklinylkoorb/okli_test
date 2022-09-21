@@ -12,6 +12,18 @@ class ShopPage extends Page {
   open() {
     return super.open("shop");
   }
+
+  freeCategoryTab() {
+    return this.browser.$("[name='freeCategory']");
+  }
+
+  coloringChristmasTree() {
+    return this.browser.$("[name='coloring-christmas-tree']");
+  }
+
+  coloringChristmasTreeTitle() {
+    return this.browser.$("[name='coloring-christmas-tree'] h3");
+  }
 }
 
 module.exports = ShopPage;
