@@ -6,6 +6,7 @@ module.exports = class Page {
   constructor(browser) {
     this.browser = browser;
   }
+ 
   open(path = "") {
     return this.browser.url(`https://mirakids.net/${path}`);
   }
@@ -28,6 +29,13 @@ module.exports = class Page {
 
   searchResultsFallingList() {
     return this.browser.$("#results a");
+  }
+
+  async fillingSearchField(query) {
+    const inputField = await this.searchInputField();
+    await inputField.click();
+    await inputField.setValue(query);
+    return this.searchResultsFallingList();
   }
 
 };
