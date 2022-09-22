@@ -5,7 +5,7 @@ const {
   subscribeWithEmailForTheFirstTime,
 } = require("./newsletterSubscription.test");
 const { 
-  searchWithValidData 
+  searchWithValidData, searchWithInvalidData,
 } = require("./searchField.test");
 
 module.exports = {
@@ -13,4 +13,5 @@ module.exports = {
   checkShopTabs: checkShopTabs,
   subscribeWithEmailForTheFirstTime: subscribeWithEmailForTheFirstTime,
   searchWithValidData: searchWithValidData,
+  searchWithInvalidData: searchWithInvalidData,
 };
