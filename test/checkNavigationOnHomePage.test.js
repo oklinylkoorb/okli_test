@@ -45,8 +45,44 @@ async function checkShopTabs(browser) {
   await freeCategoryTab.click();
   const coloringChristmasTreeTitle = await shopPage.coloringChristmasTreeTitle();
   await coloringChristmasTreeTitle;
+  assert(await coloringChristmasTreeTitle.getText()).equals("Coloring Christmas tree");
 
-  return assert(await coloringChristmasTreeTitle.getText()).equals("Coloring Christmas tree");
+  console.log("Step 4: Click on 'Games' category");
+  const gamesCategoryTab = await shopPage.gamesCategoryTab();
+  await gamesCategoryTab.click();
+  const myFirstGamesTitle = await shopPage.myFirstGamesTitle();
+  await myFirstGamesTitle;
+  assert(await myFirstGamesTitle.getText()).equals("My first games");
+
+  console.log("Step 5: Click on 'Creativity' category");
+  const creativityCategoryTab = await shopPage.creativityCategoryTab();
+  await creativityCategoryTab.click();
+  const postcardChristmasDeerTitle = await shopPage.postcardChristmasDeerTitle();
+  await postcardChristmasDeerTitle;
+  assert(await postcardChristmasDeerTitle.getText()).equals("Postcard Christmas deer");
+
+  console.log("Step 6 Click on 'Stickers' category");
+  const stickersCategoryTab = await shopPage.stickersCategoryTab();
+  await stickersCategoryTab.click();
+  const dinoStickersTitle = await shopPage.dinoStickersTitle();
+  await dinoStickersTitle;
+  assert(await dinoStickersTitle.getText()).equals("Dino stickers");
+
+  console.log("Step 7: Click on 'Drawing' category");
+  const drawingCategoryTab = await shopPage.drawingCategoryTab();
+  await drawingCategoryTab.click();
+  await shopPage.coloringChristmasTreeTitle();
+  await coloringChristmasTreeTitle;
+  assert(await coloringChristmasTreeTitle.getText()).equals("Coloring Christmas tree");
+
+  console.log("Step 8: Click on 'Decoration' category");
+  const decorationCategoryTab = await shopPage.decorationCategoryTab();
+  await decorationCategoryTab.click();
+  const posterFruitsTitle = await shopPage.posterFruitsTitle();
+  await posterFruitsTitle;
+  return assert(await posterFruitsTitle.getText()).equals("Poster. Fruits");
+
+
 }
 
 module.exports = {
