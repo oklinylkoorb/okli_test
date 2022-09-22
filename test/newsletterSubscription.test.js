@@ -4,7 +4,9 @@ const { assert } = require("../utils/assert");
 
 // Subscribe With New Email
 async function subscribeWithEmailForTheFirstTime(browser) {
-  console.log("TEST: Subscribe with email the first time - check successful message");
+  console.log(
+    "TEST: Subscribe with email the first time - check successful message"
+  );
 
   console.log("Step 1: Open Home Page");
   const homePage = new HomePage(browser);
@@ -24,9 +26,9 @@ async function subscribeWithEmailForTheFirstTime(browser) {
   console.log("Step 4: Click on Subscribe Button");
   const subscribeBtn = await homePage.subscribeBtn();
   await subscribeBtn.click();
-  const subscriptionSuccessMsg = await homePage.subscriptionSuccessMsg();
-
-  return assert(await subscriptionSuccessMsg.getText()).equals("Done!");
+  return assert(await homePage.subscriptionSuccessMsg()).elementTextContains(
+    "Done!"
+  );
 }
 
 module.exports = {
