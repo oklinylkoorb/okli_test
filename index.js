@@ -20,6 +20,7 @@ async function runTests() {
         });
         passed++;
       } catch (e) {
+        await browser.saveScreenshot(`screenshots/${key}-${Date.now()}.png`);
         results.push({
           name: `${key} - failed`,
           status: RED,
