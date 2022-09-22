@@ -25,6 +25,30 @@ async function searchWithValidData(browser) {
   return assert(await searchResultsFallingList.getText()).equals("Dino stickers");
 }
 
+// Search With Invalid Data
+async function searchWithInvalidData(browser) {
+    console.log("TEST: Valid data search");
+  
+    console.log("Step 1: Open Home Page");
+    const homePage = new HomePage(browser);
+    homePage.open();
+  
+    const closeModalBtn = await homePage.closeModalBtn();
+    await closeModalBtn.click();
+  
+    console.log("Step 2: Click on Search Field");
+    const searchInputField = await homePage.searchInputField();
+    await searchInputField.click();
+  
+    console.log("Step 3: Type text into Search Field");
+    await searchInputField.setValue("asdf");
+  
+    console.log("Step 4: Check if search result does not exist'");
+    const searchResultsFallingList = await homePage.searchResultsFallingList();
+    return assert (await searchResultsFallingList.isExisting()).toBe(false);
+  }
+
 module.exports = {
   searchWithValidData: searchWithValidData,
+  searchWithInvalidData: searchWithInvalidData,
 };
