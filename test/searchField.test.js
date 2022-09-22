@@ -21,7 +21,6 @@ async function searchWithValidData(browser) {
 
   console.log("Step 4: Check if search result contains 'Dino'");
   const searchResultsFallingList = await homePage.searchResultsFallingList();
-  await searchResultsFallingList;
   return assert(await searchResultsFallingList.getText()).equals("Dino stickers");
 }
 
@@ -36,15 +35,8 @@ async function searchWithInvalidData(browser) {
     const closeModalBtn = await homePage.closeModalBtn();
     await closeModalBtn.click();
   
-    console.log("Step 2: Click on Search Field");
-    const searchInputField = await homePage.searchInputField();
-    await searchInputField.click();
-  
-    console.log("Step 3: Type text into Search Field");
-    await searchInputField.setValue("asdf");
-  
-    console.log("Step 4: Check if search result does not exist'");
-    const searchResultsFallingList = await homePage.searchResultsFallingList();
+    console.log("Step 2: Fill search field with invalid data and check result");
+    const searchResultsFallingList = await homePage.fillingSearchField("asdf");
     return assert (await searchResultsFallingList.isExisting()).toBe(false);
   }
 
