@@ -2,6 +2,7 @@ const HomePage = require("../pageobjects/home.page");
 const ShopPage = require("../pageobjects/shop.page");
 const { assert } = require("../utils/assert");
 
+// Subscribe With New Email
 async function subscribeWithEmailForTheFirstTime(browser) {
   console.log("TEST: Subscribe with email the first time - check successful message");
 

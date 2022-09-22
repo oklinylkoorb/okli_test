@@ -21,4 +21,13 @@ module.exports = class Page {
   subscriptionSuccessMsg() {
     return this.browser.$("#subscribe [name='Done!']");
   }
+
+  searchInputField() {
+    return this.browser.$("[name='Search...']");
+  }
+
+  searchResultsFallingList() {
+    return this.browser.$("#results a");
+  }
+
 };
