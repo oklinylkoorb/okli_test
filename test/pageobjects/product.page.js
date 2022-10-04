@@ -2,8 +2,8 @@ const Page = require("./page");
 
 class ProductPage extends Page {
   addToCartBtn() {
-    return this.browser.$("#addToCardBtn");
+    return $("#addToCardBtn");
   }
 }
 
-module.exports = ProductPage;
+module.exports = new ProductPage();

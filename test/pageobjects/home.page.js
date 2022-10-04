@@ -2,11 +2,11 @@ const Page = require("./page");
 
 class HomePage extends Page {
   shopBtn() {
-    return this.browser.$("#shopBtn");
+    return $("#shopBtn");
   }
 
   closeModalBtn() {
-    return this.browser.$(".mc-closeModal");
+    return $(".mc-closeModal");
   }
 
   open() {
@@ -14,4 +14,4 @@ class HomePage extends Page {
   }
 }
 
-module.exports = HomePage;
+module.exports = new HomePage();
