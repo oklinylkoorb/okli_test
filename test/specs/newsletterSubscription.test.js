@@ -10,7 +10,6 @@ describe('Newsletter subscription Test', () => {
 
     console.log("Step 1: Open Home Page");
     await HomePage.open();
-
     const closeModalBtn = await HomePage.closeModalBtn();
     await closeModalBtn.click();
 
@@ -36,7 +35,9 @@ describe('Newsletter subscription Test', () => {
     );
 
     console.log("Step 1: Open Home Page");
-    HomePage.open();
+    await HomePage.open();
+    const closeModalBtn = await HomePage.closeModalBtn();
+    await closeModalBtn.click();
 
     console.log("Step 2: Click on Subscribe Button");
     const subscribeInputField = await HomePage.subscribeInputField();
@@ -53,14 +54,16 @@ describe('Newsletter subscription Test', () => {
     );
 
     console.log("Step 1: Open Home Page");
-    HomePage.open();
+    await HomePage.open();
+    const closeModalBtn = await HomePage.closeModalBtn();
+    await closeModalBtn.click();
 
     console.log("Step 2: Register new email");
     await HomePage.fillingEmailForm("jacksson@ukr.net");
     expect(await HomePage.subscriptionSuccessMsg()).toHaveTextContaining("Done!");
 
     console.log("Step 3: Refresh page and enter already registered email");
-    browser.refresh();
+    await browser.refresh();
     await HomePage.fillingEmailForm("jacksson@ukr.net");
     return expect(await HomePage.subscriptionSuccessMsg()).toHaveTextContaining("Subscribe");
   })
@@ -72,7 +75,9 @@ describe('Newsletter subscription Test', () => {
     );
 
     console.log("Step 1: Open Home Page");
-    HomePage.open();
+    await HomePage.open();
+    const closeModalBtn = await HomePage.closeModalBtn();
+    await closeModalBtn.click();
 
     console.log("Step 2: Insert invalid data into registration field");
     const resultMssg = await HomePage.fillingEmailForm("asdf");

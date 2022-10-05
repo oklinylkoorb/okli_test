@@ -1,7 +1,6 @@
 const HomePage = require("../pageobjects/home.page");
 const ProductPage = require("../pageobjects/product.page");
 const ShopPage = require("../pageobjects/shop.page");
-const { continueShoppingBtn } = require("../pageobjects/shoppingBag.page");
 const ShoppingBag = require("../pageobjects/shoppingBag.page");
 
 describe('Cart Functionality Test', () => {
@@ -12,7 +11,6 @@ describe('Cart Functionality Test', () => {
 
     console.log("Step 1: Open Home Page");
     await HomePage.open();
-
     const closeModalBtn = await HomePage.closeModalBtn();
     await closeModalBtn.click();
 
@@ -38,6 +36,8 @@ describe('Cart Functionality Test', () => {
 
     console.log("Step 1: Open Home Page");
     await HomePage.open();
+    const closeModalBtn = await HomePage.closeModalBtn();
+    await closeModalBtn.click();
 
     console.log("Step 2: Go to shop");
     const shopBtn = await HomePage.shopBtn();
@@ -69,7 +69,7 @@ describe('Cart Functionality Test', () => {
     const removePosterFruit = await ShoppingBag.removeProduct();
     await removePosterFruit.click();
     const orderSumm = ShoppingBag.orderSumm();
-    return expect(await orderSumm.isEqual("2.00"));
+    return expect(await orderSumm.getText()).toContain("2.00");
 
   })
 })

@@ -10,7 +10,6 @@ describe('Navigation on Home page Test', () => {
 
     console.log("Step 1: Open Home Page");
     await HomePage.open();
-
     const closeModalBtn = await HomePage.closeModalBtn();
     await closeModalBtn.click();
 
@@ -29,6 +28,8 @@ describe('Navigation on Home page Test', () => {
 
     console.log("Step 1: Open Home Page");
     await HomePage.open();
+    const closeModalBtn = await HomePage.closeModalBtn();
+    await closeModalBtn.click();
 
     console.log("Step 2: Click on Shop Btn");
     const shopBtn = await HomePage.shopBtn();

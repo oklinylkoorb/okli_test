@@ -8,7 +8,6 @@ describe('Search Field Test', () => {
 
     console.log("Step 1: Open Home Page");
     await HomePage.open();
-
     const closeModalBtn = await HomePage.closeModalBtn();
     await closeModalBtn.click();
 
@@ -30,6 +29,8 @@ describe('Search Field Test', () => {
 
     console.log("Step 1: Open Home Page");
     await HomePage.open();
+    const closeModalBtn = await HomePage.closeModalBtn();
+    await closeModalBtn.click();
 
     console.log("Step 2: Fill search field with invalid data and check result");
     const searchResultsFallingList = await HomePage.fillingSearchField("asdf");
