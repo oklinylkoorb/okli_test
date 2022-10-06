@@ -4,7 +4,6 @@
  */
  module.exports = class Page {
   
-
     // Page objects
    
      open(path = "") {
@@ -39,6 +38,10 @@
      searchResultsFallingList() {
        return $("#results a");
      }
+     
+     pageTitle() {
+      return $(".jnPWak");
+    }
    
    // Functions
    
@@ -54,7 +57,7 @@
        await emailInputField.scrollIntoView();
        await emailInputField.click();
        await emailInputField.setValue(query);
-       const clickSubBtn = this.subscribeBtn();
+       const clickSubBtn = await this.subscribeBtn();
        await clickSubBtn.click();
        return this.subscriptionSuccessMsg();
      }

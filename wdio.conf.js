@@ -136,10 +136,7 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec', [video, {
-        saveAllVideos: false,       // If true, also saves videos for successful test cases
-        videoSlowdownMultiplier: 3, // Higher to get slower videos, lower for faster videos [Value 1-100]
-    }], ["html-nice", {
+    reporters: ['spec', ["html-nice", {
         outputDir: './reports/html-reports/',
         filename: 'report.html',
         reportTitle: 'Test Report Title',
