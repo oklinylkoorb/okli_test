@@ -26,6 +26,10 @@
      basketNavBtn() {
        return $("#basketNav");
      }
+
+     wishlistNavBtn() {
+      return $("#wishlistNav");
+    }
    
      subscriptionSuccessMsg() {
        return $("[name='Done!']");
