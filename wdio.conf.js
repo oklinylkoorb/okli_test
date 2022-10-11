@@ -1,4 +1,5 @@
 const video = require('wdio-video-reporter');
+const fs = require ("fs");
 const {ReportAggregator, HtmlReporter} = require('wdio-html-nice-reporter');
 let reportAggregator ; 
 
@@ -136,10 +137,12 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec', [video, {
+    reporters: ['spec', 
+        [video, {
         saveAllVideos: false,       // If true, also saves videos for successful test cases
-        videoSlowdownMultiplier: 3, // Higher to get slower videos, lower for faster videos [Value 1-100]
-    }], ["html-nice", {
+        videoSlowdownMultiplier: 15, // Higher to get slower videos, lower for faster videos [Value 1-100]
+        }], 
+        ["html-nice", {
         outputDir: './reports/html-reports/',
         filename: 'report.html',
         reportTitle: 'Test Report Title',
@@ -176,8 +179,9 @@ exports.config = {
      * @param {Object} config wdio configuration object
      * @param {Array.<Object>} capabilities list of capabilities details
      */
-    // onPrepare: function (config, capabilities) {
-    // },
+    onPrepare: function (config, capabilities) {
+        fs.rmSync("./_results_", { recursive: true, force: true });
+    },
     /**
      * Gets executed before a worker process is spawned and can be used to initialise specific service
      * for that worker as well as modify runtime environments in an async fashion.

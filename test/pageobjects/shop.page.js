@@ -33,6 +33,10 @@ class ShopPage extends Page {
   
   // Shop Containers and Titles
 
+  dinoStickersLikeBtn() {
+    return $("[name='dino-stickers'] .kypVqN");
+  }
+
   dinoStickersContainer() {
     return $("[name='dino-stickers']");
   }
@@ -49,6 +53,10 @@ class ShopPage extends Page {
     return $("[name='coloring-christmas-tree'] h3");
   }
 
+  myFirstGamesLikeBtn() {
+    return $("[name='my-first-games'] .kypVqN");
+  }
+
   myFirstGamesContainer() {
     return $("[name='my-first-games']");
   }
@@ -63,6 +71,10 @@ class ShopPage extends Page {
 
   postcardChristmasDeerTitle() {
     return $("[name='postcard-christmas-deer'] h3");
+  }
+
+  posterFruitsLikeBtn() {
+    return $("[name='poster-fruits'] .kypVqN");
   }
 
   posterFruitsContainer() {
